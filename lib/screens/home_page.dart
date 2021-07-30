@@ -4,9 +4,9 @@ import 'package:grocery_app/apptheme.dart';
 import 'package:grocery_app/components/home_slider.dart';
 import 'package:grocery_app/screens/f_v_page.dart';
 import 'package:grocery_app/screens/dairy_bakery_page.dart';
-import 'package:grocery_app/screens/personal_care_page.dart';
-import 'package:grocery_app/services.dart/getdbproducts.dart';
-import 'package:grocery_app/models/dbproducts.dart';
+//import 'package:grocery_app/screens/personal_care_page.dart';
+//import 'package:grocery_app/services.dart/getdbproducts.dart';
+//import 'package:grocery_app/models/dbproducts.dart';
 import 'package:grocery_app/services.dart/getfvproducts.dart';
 import 'package:grocery_app/models/fvproducts.dart';
 import 'package:grocery_app/services.dart/getuser.dart';
@@ -20,18 +20,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String userName = 'C';
+  String userName = 'G';
+  // ignore: prefer_final_fields
   GlobalKey<ScaffoldState> _sckey = GlobalKey<ScaffoldState>();
+  // ignore: prefer_final_fields
   UserFetching _userFetching = UserFetching();
-  MedicineFetching medFetching = MedicineFetching();
+  //MedicineFetching medFetching = MedicineFetching();
+  // ignore: prefer_final_fields
   FVFetching _fvFetching = FVFetching();
-  List<MProduct> mitems = [];
+  //List<MProduct> mitems = [];
   List<FVProduct> fvtems = [];
   bool isLoaded = true;
-  AUser cuser;
+  late AUser cuser;
   List imageArray = [
+    'assets/offers.jpg',
+    'assets/offers1.jpg',
+    'assets/offers2.jpg',
     'assets/slider4.jpeg',
-    'assets/slider5.jpeg',
     'assets/slider6.jpeg',
     'assets/slider3.jpg'
   ];
@@ -43,10 +48,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> getMedicineItems() async {
-    List fetchedData = await medFetching.getMedicines2();
-    List fetchedData1 = await _fvFetching.getFV();
+    // List fetchedData = await medFetching.getMedicines2();
+    List<FVProduct> fetchedData1 = await _fvFetching.getFV();
     setState(() {
-      mitems = fetchedData;
+      //mitems = fetchedData;
       fvtems = fetchedData1;
     });
   }
@@ -73,16 +78,18 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 50,
-        backgroundColor: CustomColors.AppbarColor,
+        backgroundColor: Colors.black87,
         leading: IconButton(
+          // ignore: prefer_const_constructors
           icon: Icon(Icons.menu),
-          onPressed: () => _sckey.currentState.isDrawerOpen
+          onPressed: () => _sckey.currentState!.isDrawerOpen
               ? Navigator.of(context).pop(context)
-              : _sckey.currentState.openDrawer(),
+              : _sckey.currentState!.openDrawer(),
         ),
         title: Text("Hello " + userName, style: CustomTextStyles.AppbarText),
         actions: [
           IconButton(
+              // ignore: prefer_const_constructors
               icon: Icon(Icons.shopping_cart, color: Colors.white),
               onPressed: () {
                 Navigator.push(context,
@@ -99,56 +106,65 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // ignore: prefer_const_constructors
           SizedBox(height: 10),
           HomeSlider(imageArray: imageArray),
+          // ignore: prefer_const_constructors
           SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            // ignore: prefer_const_literals_to_create_immutables
             children: [
+              // ignore: prefer_const_constructors
               Text('Shop by Category',
+                  // ignore: prefer_const_constructors
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))
             ],
           ),
+          // ignore: prefer_const_constructors
           SizedBox(height: 10),
           Row(
             children: [
+              // ignore: prefer_const_constructors
               Spacer(),
               HomeCard(
                 title: 'Food',
                 image: 'assets/food.png',
                 onpress: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FoodPage()));
+                      MaterialPageRoute(builder: (context) => DBPage()));
                 },
               ),
-              SizedBox(width: 15),
-              HomeCard(
-                title: 'Medicine',
-                image: 'assets/medicine.png',
-                onpress: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MedicinePage()));
-                },
-              ),
-              Spacer(),
+              // SizedBox(width: 15),
+              // HomeCard(
+              //   title: 'Medicine',
+              //   image: 'assets/medicine.png',
+              //   onpress: () {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) => MedicinePage()));
+              //   },
+              // ),
+              // Spacer(),
             ],
           ),
+          // ignore: prefer_const_constructors
           SizedBox(height: 15),
           Row(
             children: [
               Spacer(),
               HomeCard(
-                  title: 'Fruits & Vegetables',
-                  image: 'assets/f&v.png',
-                  onpress: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FVPage(fvtems)));
-                  }),
+                title: 'Fruits & Vegetables',
+                image: 'assets/f&v.png',
+                onpress: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FVPage(fvtems)));
+                },
+              ),
+              // ignore: prefer_const_constructors
               Spacer(),
             ],
           ),
+          HomeSlider(imageArray: imageArray),
         ],
       ),
     );
