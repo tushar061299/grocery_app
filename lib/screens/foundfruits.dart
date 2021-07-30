@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/apptheme.dart';
+import 'package:grocery_app/components/fvsearchcard.dart';
 import 'package:grocery_app/models/fvproducts.dart';
-import 'package:topica/components/fvsearchcard.dart';
 
 class FoundProducts extends StatefulWidget {
   final String value;
   final List<FVProduct> fvlist;
-  FoundProducts(this.fvlist,this.value);
+  FoundProducts(this.fvlist, this.value);
   @override
   _FoundProductsState createState() => _FoundProductsState();
 }
 
 class _FoundProductsState extends State<FoundProducts> {
   List suggestionlist = [];
-  List _filter(value){
-    return suggestionlist = value.isEmpty ? widget.fvlist
-        : widget.fvlist.where((element) => element.name.toLowerCase().contains(value.toLowerCase())).toList();
+  List _filter(value) {
+    return suggestionlist = value.isEmpty
+        ? widget.fvlist
+        : widget.fvlist
+            .where((element) =>
+                element.name!.toLowerCase().contains(value.toLowerCase()))
+            .toList();
   }
+
   @override
   Widget build(BuildContext context) {
     _filter(widget.value);
@@ -30,11 +35,12 @@ class _FoundProductsState extends State<FoundProducts> {
       body: getBody(),
     );
   }
-  getBody(){
+
+  getBody() {
     return SingleChildScrollView(
       child: Column(
         children: [
-            FVSearchCard(product: suggestionlist[0]),
+          FVSearchCard(product: suggestionlist[0]),
         ],
       ),
     );

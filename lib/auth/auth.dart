@@ -6,10 +6,10 @@ abstract class BaseAuth {
   Future<void> signInWithEmailAndPassword(String email, String password);
 
   Future<bool> createUserWithEmailAndPassword({
-    String name,
-    String phone,
-    String email,
-    String password,
+    String? name,
+    String? phone,
+    String? email,
+    String? password,
   });
 
   Future<String> currentUser();

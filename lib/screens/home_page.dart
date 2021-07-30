@@ -5,14 +5,14 @@ import 'package:grocery_app/components/home_slider.dart';
 import 'package:grocery_app/screens/f_v_page.dart';
 import 'package:grocery_app/screens/dairy_bakery_page.dart';
 //import 'package:grocery_app/screens/personal_care_page.dart';
-//import 'package:grocery_app/services.dart/getdbproducts.dart';
-//import 'package:grocery_app/models/dbproducts.dart';
-import 'package:grocery_app/services.dart/getfvproducts.dart';
+import 'package:grocery_app/services/getdbproducts.dart';
+import 'package:grocery_app/models/dbproducts.dart';
 import 'package:grocery_app/models/fvproducts.dart';
-import 'package:grocery_app/services.dart/getuser.dart';
 import 'package:grocery_app/models/user.dart';
 import 'package:grocery_app/components/appdrawer.dart';
 import 'package:grocery_app/screens/cartpage.dart';
+import 'package:grocery_app/services/getfvproducts.dart';
+import 'package:grocery_app/services/getuser.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -25,10 +25,10 @@ class _HomePageState extends State<HomePage> {
   GlobalKey<ScaffoldState> _sckey = GlobalKey<ScaffoldState>();
   // ignore: prefer_final_fields
   UserFetching _userFetching = UserFetching();
-  //MedicineFetching medFetching = MedicineFetching();
+  DBFetching dbFetching = DBFetching();
   // ignore: prefer_final_fields
   FVFetching _fvFetching = FVFetching();
-  //List<MProduct> mitems = [];
+  List<DBProduct> dbitems = [];
   List<FVProduct> fvtems = [];
   bool isLoaded = true;
   late AUser cuser;
@@ -47,11 +47,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future<void> getMedicineItems() async {
-    // List fetchedData = await medFetching.getMedicines2();
+  Future<void> getDBItems() async {
+    List<DBProduct> fetchedData = await dbFetching.getDB2();
     List<FVProduct> fetchedData1 = await _fvFetching.getFV();
     setState(() {
-      //mitems = fetchedData;
+      dbitems = fetchedData;
       fvtems = fetchedData1;
     });
   }
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       isLoaded = false;
     });
-    getMedicineItems().whenComplete(() {
+    getDBItems().whenComplete(() {
       setState(() {
         isLoaded = true;
       });

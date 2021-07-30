@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HomeCard extends StatelessWidget {
   final String title;
   final String image;
-  final Function onpress;
+  final void Function() onpress;
   HomeCard({required this.title, required this.image, required this.onpress});
 
   @override
@@ -15,6 +15,7 @@ class HomeCard extends StatelessWidget {
         elevation: 5,
         borderRadius: BorderRadius.circular(8),
         color: Colors.white,
+        // ignore: sized_box_for_whitespace
         child: Container(
           height: x * 0.4,
           width: x * 0.4,
@@ -25,6 +26,7 @@ class HomeCard extends StatelessWidget {
                 child: Container(
                   height: x / 3.4,
                   width: x / 3.4,
+                  // ignore: prefer_const_constructors
                   margin: EdgeInsets.only(bottom: 6, top: 12),
                   decoration: BoxDecoration(
                     image: DecorationImage(

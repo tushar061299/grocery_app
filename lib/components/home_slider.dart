@@ -14,7 +14,9 @@ class HomeSlider extends StatelessWidget {
       options: CarouselOptions(
         height: 200.0,
         autoPlay: true,
+        // ignore: prefer_const_constructors
         autoPlayInterval: Duration(seconds: 3),
+        // ignore: prefer_const_constructors
         autoPlayAnimationDuration: Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
         aspectRatio: 1.0,
