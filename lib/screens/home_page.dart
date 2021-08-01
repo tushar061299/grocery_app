@@ -4,9 +4,11 @@ import 'package:grocery_app/apptheme.dart';
 import 'package:grocery_app/components/home_slider.dart';
 import 'package:grocery_app/screens/f_v_page.dart';
 import 'package:grocery_app/screens/dairy_bakery_page.dart';
-//import 'package:grocery_app/screens/personal_care_page.dart';
+import 'package:grocery_app/screens/personal_care_page.dart';
 import 'package:grocery_app/services/getdbproducts.dart';
 import 'package:grocery_app/models/dbproducts.dart';
+import 'package:grocery_app/services/getpcproducts.dart';
+import 'package:grocery_app/models/pcproducts.dart';
 import 'package:grocery_app/models/fvproducts.dart';
 import 'package:grocery_app/models/user.dart';
 import 'package:grocery_app/components/appdrawer.dart';
@@ -28,8 +30,10 @@ class _HomePageState extends State<HomePage> {
   DBFetching dbFetching = DBFetching();
   // ignore: prefer_final_fields
   FVFetching _fvFetching = FVFetching();
+  PCFetching pcFetching = PCFetching
   List<DBProduct> dbitems = [];
   List<FVProduct> fvtems = [];
+  List<PCproduct> pcitems =[];
   bool isLoaded = true;
   late AUser cuser;
   List imageArray = [
@@ -50,9 +54,11 @@ class _HomePageState extends State<HomePage> {
   Future<void> getDBItems() async {
     List<DBProduct> fetchedData = await dbFetching.getDB2();
     List<FVProduct> fetchedData1 = await _fvFetching.getFV();
+    List<PCProduct> fetchedData2 = await pcFetching.getPC2();
     setState(() {
       dbitems = fetchedData;
       fvtems = fetchedData1;
+      pcitems = fetchedData2;
     });
   }
 
@@ -128,23 +134,26 @@ class _HomePageState extends State<HomePage> {
               // ignore: prefer_const_constructors
               Spacer(),
               HomeCard(
-                title: 'Food',
-                image: 'assets/food.png',
+                title: 'Dairy & Bakery',
+                image: 'assets/vegetables.png',
                 onpress: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => DBPage()));
                 },
               ),
-              // SizedBox(width: 15),
-              // HomeCard(
-              //   title: 'Medicine',
-              //   image: 'assets/medicine.png',
-              //   onpress: () {
-              //     Navigator.push(context,
-              //         MaterialPageRoute(builder: (context) => MedicinePage()));
-              //   },
-              // ),
-              // Spacer(),
+              SizedBox(width: 15),
+              HomeCard(
+                title: 'Personal Care',
+                image: 'assets/vegetables.png',
+                onpress: () {
+                  Navigator.push(
+                      context,
+                      // ignore: prefer_const_constructors
+                      MaterialPageRoute(
+                          builder: (context) => PersonalCarePage(pcitems)));
+                },
+              ),
+              Spacer(),
             ],
           ),
           // ignore: prefer_const_constructors
@@ -164,6 +173,8 @@ class _HomePageState extends State<HomePage> {
               Spacer(),
             ],
           ),
+          // ignore: prefer_const_constructors
+          SizedBox(height: 30.0),
           HomeSlider(imageArray: imageArray),
         ],
       ),

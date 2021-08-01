@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:grocery_app/main.dart';
 import 'dart:io';
+import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:grocery_app/screens/detailspage.dart';
 import 'package:grocery_app/apptheme.dart';
@@ -52,32 +54,39 @@ class _CameraScreenState extends State<CameraScreen> {
         .toString();
 
     String formattedDateTime = dateTime.replaceAll(' ', '');
+    // ignore: avoid_print
     print("Formatted: $formattedDateTime");
 
     // Retrieving the path for saving an image
     final Directory appDocDir = await getApplicationDocumentsDirectory();
-    final String visionDir = '${appDocDir.path}/Photos/Vision\ Images';
-    await Directory(visionDir).create(recursive: true);
-    final String imagePath = '$visionDir/image_$formattedDateTime.jpg';
+    //final String visionDir = '${appDocDir.path}/Photos/Vision\ Images';
+    // await Directory(visionDir).create(recursive: true);
+    final String imagePath; //'$visionDir/image_$formattedDateTime.jpg';
 
     // Checking whether the picture is being taken
     // to prevent execution of the function again
     // if previous execution has not ended
     if (_controller.value.isTakingPicture) {
+      // ignore: avoid_print
       print("Processing is in progress...");
       return null;
     }
-
+    final image;
     try {
       // Captures the image and saves it to the
-      // provided pat
-      await _controller.takePicture(); //Add imagePath in take picrure
+      // provided path
+      image = await _controller.takePicture(); //Add imagePath in take picrure
     } on CameraException catch (e) {
+      // ignore: avoid_print
       print("Camera Exception: $e");
       return null;
     }
+    imagePath = image.path;
+    print("I crush");
     return imagePath;
   }
+
+  final imagePicker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +96,8 @@ class _CameraScreenState extends State<CameraScreen> {
         backgroundColor: CustomColors.AppbarColor,
         // ignore: prefer_const_constructors
         title:
-            Text('Scan Bill/Prescription ', style: CustomTextStyles.AppbarText),
+            // ignore: prefer_const_constructors
+            Text('Scan List ', style: CustomTextStyles.AppbarText),
       ),
       body: _controller.value.isInitialized
           ? Stack(
