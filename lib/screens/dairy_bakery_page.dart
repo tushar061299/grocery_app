@@ -47,16 +47,16 @@ class _DBPageState extends State<DBPage> {
 
   void categorize() {
     for (int i = 0; i < dbitems.length; i++) {
-      if (dbitems[i].category == 'First Aid') {
+      if (dbitems[i].category == 'Baked Cookies') {
         faitems.add(dbitems[i]);
       }
-      if (dbitems[i].category == 'Medicines') {
+      if (dbitems[i].category == 'Breads') {
         mditems.add(dbitems[i]);
       }
-      if (dbitems[i].category == 'Protein') {
+      if (dbitems[i].category == 'Dairy') {
         pitems.add(dbitems[i]);
       }
-      if (dbitems[i].category == 'Skin Care') {
+      if (dbitems[i].category == 'Toast') {
         scitems.add(dbitems[i]);
       }
     }
@@ -68,21 +68,24 @@ class _DBPageState extends State<DBPage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           toolbarHeight: 50,
-          backgroundColor: CustomColors.AppbarColor,
-          title: Text('Medicines', style: CustomTextStyles.AppbarText),
+          backgroundColor: Colors.black87,
+          // ignore: prefer_const_constructors
+          title: Text('Dairy & Bakery', style: CustomTextStyles.AppbarText),
           actions: [
             // ignore: prefer_const_constructors
             IconButton(
+                // ignore: prefer_const_constructors
                 icon: Icon(Icons.search, color: Colors.white),
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              SearchPage(dbitems, 'Medicine Search')));
+                              SearchPage(dbitems, 'Dairy Bakery Search')));
                 }),
             // ignore: prefer_const_constructors
             IconButton(
+                // ignore: prefer_const_constructors
                 icon: Icon(Icons.shopping_cart, color: Colors.white),
                 onPressed: () {
                   Navigator.push(context,
@@ -112,6 +115,7 @@ class _DBPageState extends State<DBPage> {
                 // ignore: prefer_const_constructors
                 Text(
                   'Shop by Category',
+                  // ignore: prefer_const_constructors
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
               ],
@@ -122,20 +126,18 @@ class _DBPageState extends State<DBPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 DBCategoryCard(
-                    label: 'Medicines',
-                    image: 'assets/medicine3.png',
+                    label: 'Breads',
+                    image: 'assets/Breadspng.png',
                     mlist: mditems),
                 DBCategoryCard(
-                    label: 'First Aid',
-                    image: 'assets/firstaid.png',
+                    label: 'Baked Cookies',
+                    image: 'assets/BC png.png',
                     mlist: faitems),
                 DBCategoryCard(
-                    label: 'Protein',
-                    image: 'assets/protein.png',
-                    mlist: pitems),
+                    label: 'Dairy', image: 'assets/DB png.png', mlist: pitems),
                 DBCategoryCard(
-                    label: 'Skin Care',
-                    image: 'assets/skincare.png',
+                    label: 'Toast',
+                    image: 'assets/Toast Png.png',
                     mlist: scitems),
               ],
             ),
@@ -147,6 +149,7 @@ class _DBPageState extends State<DBPage> {
                 // ignore: prefer_const_constructors
                 Text(
                   'Popular',
+                  // ignore: prefer_const_constructors
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
               ],

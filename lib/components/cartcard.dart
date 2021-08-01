@@ -90,6 +90,7 @@ class CartCard extends StatelessWidget {
                           child: Container(
                             // ignore: prefer_const_constructors
                             child:
+                                // ignore: prefer_const_constructors
                                 Text('Remove', style: CustomTextStyles.CRText),
                           ),
                         ),

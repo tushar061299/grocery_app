@@ -30,10 +30,10 @@ class _HomePageState extends State<HomePage> {
   DBFetching dbFetching = DBFetching();
   // ignore: prefer_final_fields
   FVFetching _fvFetching = FVFetching();
-  PCFetching pcFetching = PCFetching
+  PCFetching pcFetching = PCFetching();
   List<DBProduct> dbitems = [];
   List<FVProduct> fvtems = [];
-  List<PCproduct> pcitems =[];
+  List<PCProduct> pcitems = [];
   bool isLoaded = true;
   late AUser cuser;
   List imageArray = [
@@ -135,16 +135,17 @@ class _HomePageState extends State<HomePage> {
               Spacer(),
               HomeCard(
                 title: 'Dairy & Bakery',
-                image: 'assets/vegetables.png',
+                image: 'assets/Db main.png',
                 onpress: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => DBPage()));
                 },
               ),
+              // ignore: prefer_const_constructors
               SizedBox(width: 15),
               HomeCard(
                 title: 'Personal Care',
-                image: 'assets/vegetables.png',
+                image: 'assets/PcMain png.png',
                 onpress: () {
                   Navigator.push(
                       context,
@@ -153,6 +154,7 @@ class _HomePageState extends State<HomePage> {
                           builder: (context) => PersonalCarePage(pcitems)));
                 },
               ),
+              // ignore: prefer_const_constructors
               Spacer(),
             ],
           ),
@@ -160,6 +162,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 15),
           Row(
             children: [
+              // ignore: prefer_const_constructors
               Spacer(),
               HomeCard(
                 title: 'Fruits & Vegetables',
@@ -171,6 +174,14 @@ class _HomePageState extends State<HomePage> {
               ),
               // ignore: prefer_const_constructors
               Spacer(),
+              HomeCard(
+                title: 'Staples',
+                image: 'assets/f&v2.png',
+                onpress: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => FVPage(fvtems)));
+                },
+              ),
             ],
           ),
           // ignore: prefer_const_constructors

@@ -25,7 +25,7 @@ class _DetectMainState extends State<DetectMain> {
 
     // String res;
     // res = (await Tflite.loadModel(
-    //   // model: "assets/fruits.tflite",
+    //   // model: "assets/imagetotext.tflite",
     //   // labels: "assets/dict.txt",
     // ))!;
     // // ignore: avoid_print

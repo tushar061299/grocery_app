@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/apptheme.dart';
-import 'package:grocery_app/models/dbproducts.dart';
+import 'package:grocery_app/models/pcproducts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:grocery_app/services/addtocart.dart';
 
-class DBRow extends StatelessWidget {
-  const DBRow({
+class PCRow extends StatelessWidget {
+  const PCRow({
     required this.product1,
     required this.product2,
   });
 
-  final DBProduct product1;
-  final DBProduct product2;
+  final PCProduct product1;
+  final PCProduct product2;
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +20,23 @@ class DBRow extends StatelessWidget {
       padding: EdgeInsets.only(top: 12),
       child: Row(
         children: [
-          DBProductCard(product: product1),
+          PCProductCard(product: product1),
           // ignore: prefer_const_constructors
           SizedBox(width: 15),
-          DBProductCard(product: product2),
+          PCProductCard(product: product2),
         ],
       ),
     );
   }
 }
 
-class DBProductCard extends StatelessWidget {
+class PCProductCard extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
-  DBProductCard({
+  PCProductCard({
     required this.product,
   });
 
-  final DBProduct product;
+  final PCProduct product;
   final AddtoCart _addtoCart = AddtoCart();
 
   @override
@@ -57,7 +57,8 @@ class DBProductCard extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 5, top: 8),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(product.image!), fit: BoxFit.fitHeight),
+                    image: NetworkImage(product.image ?? 'assets/HCpng.png'),
+                    fit: BoxFit.fitHeight),
               ),
             ),
             Container(
@@ -69,7 +70,7 @@ class DBProductCard extends StatelessWidget {
                   // ignore: avoid_unnecessary_containers
                   Container(
                     // ignore: prefer_const_constructors
-                    child: Text(product.name!,
+                    child: Text(product.name ?? "Hair Care",
                         // ignore: prefer_const_constructors
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w600)),

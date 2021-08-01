@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/models/dbproducts.dart';
-import 'package:grocery_app/screens/camerapage.dart';
+import 'package:grocery_app/models/pcproducts.dart';
+// import 'package:grocery_app/screens/camerapage.dart';
 
-class DBCard extends StatelessWidget {
-  const DBCard({
-    required this.dblist,
+class PCCard extends StatelessWidget {
+  const PCCard({
+    required this.pclist,
   });
-  final List<DBProduct> dblist;
+  final List<PCProduct> pclist;
   @override
   Widget build(BuildContext context) {
     double y = MediaQuery.of(context).size.height;
     double x = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => CameraScreen(dblist)));
+        // Navigator.push(context,
+        //     MaterialPageRoute(builder: (context) => CameraScreen(dblist)));
       },
       child: Row(
         children: [
@@ -81,7 +81,7 @@ class DBCard extends StatelessWidget {
                               // ignore: prefer_const_constructors
                               margin: EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 0),
-                              child: Image.asset('assets/Db main.png',
+                              child: Image.asset('assets/PcMain png.png',
                                   fit: BoxFit.fill),
                             )
                           ],

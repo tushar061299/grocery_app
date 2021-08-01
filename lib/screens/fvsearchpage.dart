@@ -30,7 +30,7 @@ class _FVSearchPageState extends State<FVSearchPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: CustomColors.AppbarColor,
+        backgroundColor: Colors.black87,
         title: Text(widget.title, style: CustomTextStyles.AppbarText),
       ),
       body: getBody(),

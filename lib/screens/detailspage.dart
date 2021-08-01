@@ -133,12 +133,13 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: avoid_print
     print(flist);
     return Scaffold(
       appBar: AppBar(
         // ignore: prefer_const_constructors
         title: Text("Products Found"),
-        backgroundColor: CustomColors.AppbarColor,
+        backgroundColor: Colors.black87,
       ),
       body: _imageSize != null
           ? SingleChildScrollView(

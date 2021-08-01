@@ -82,7 +82,8 @@ class _CameraScreenState extends State<CameraScreen> {
       return null;
     }
     imagePath = image.path;
-    print("I crush");
+    // ignore: avoid_print
+    // print("I crush");
     return imagePath;
   }
 

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/models/dbproducts.dart';
-import 'package:grocery_app/screens/dbcategoryscreen.dart';
+import 'package:grocery_app/models/pcproducts.dart';
+import 'package:grocery_app/screens/pccategoryscreen.dart';
 
-class DBCategoryCard extends StatelessWidget {
-  const DBCategoryCard(
-      {required this.label, required this.image, required this.mlist});
+class PCCategoryCard extends StatelessWidget {
+  const PCCategoryCard(
+      {required this.label, required this.image, required this.pclist});
 
   final String label;
   final String image;
-  final List<DBProduct> mlist;
+  final List<PCProduct> pclist;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class DBCategoryCard extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => DBCategoryPage(mlist, label)));
+                builder: (context) => PCCategoryPage(pclist, label)));
       },
       child: Column(
         children: [

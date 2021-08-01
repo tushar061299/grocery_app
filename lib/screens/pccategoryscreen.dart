@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/apptheme.dart';
-import 'package:grocery_app/components/dbsearchcard.dart';
-import 'package:grocery_app/models/dbproducts.dart';
+import 'package:grocery_app/components/pcsearchcard.dart';
+import 'package:grocery_app/models/pcproducts.dart';
 
-class DBCategoryPage extends StatefulWidget {
-  final List<DBProduct>? dblist;
+class PCCategoryPage extends StatefulWidget {
+  final List<PCProduct>? pclist;
   final String title;
-  DBCategoryPage(this.dblist, this.title);
+  PCCategoryPage(this.pclist, this.title);
   @override
-  _DBCategoryPageState createState() => _DBCategoryPageState();
+  _PCCategoryPageState createState() => _PCCategoryPageState();
 }
 
-class _DBCategoryPageState extends State<DBCategoryPage> {
+class _PCCategoryPageState extends State<PCCategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,11 +25,12 @@ class _DBCategoryPageState extends State<DBCategoryPage> {
 
   getBody() {
     return SingleChildScrollView(
+      // ignore: avoid_unnecessary_containers
       child: Container(
         child: Column(
           children: [
-            for (int i = 0; i < widget.dblist!.length; i++)
-              DBSearchCard(product: widget.dblist![i]),
+            for (int i = 0; i < widget.pclist!.length; i++)
+              PCSearchCard(product: widget.pclist![i]),
             // ignore: prefer_const_constructors
             SizedBox(height: 12),
           ],

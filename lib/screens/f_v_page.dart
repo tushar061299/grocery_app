@@ -26,6 +26,7 @@ class _FVPageState extends State<FVPage> {
   }
 
   categorize() {
+    // ignore: avoid_print
     print(widget.fvlist.length);
     for (int i = 0; i < widget.fvlist.length; i++) {
       if (widget.fvlist[i].category == 'Fruits') {

@@ -4,21 +4,21 @@ import 'package:grocery_app/components/dbsearchcard.dart';
 import 'package:grocery_app/models/dbproducts.dart';
 
 class SearchPage extends StatefulWidget {
-  final List<DBProduct> mlist;
+  final List<DBProduct> dblist;
   final String title;
-  SearchPage(this.mlist, this.title);
+  SearchPage(this.dblist, this.title);
   @override
   _SearchPageState createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
   late int i;
-  List suggestionlist = [];
+  List? suggestionlist = [];
   void _filter(value) {
     setState(() {
       suggestionlist = value.isEmpty
-          ? widget.mlist
-          : widget.mlist
+          ? widget.dblist
+          : widget.dblist
               .where((element) =>
                   element.name!.toLowerCase().contains(value.toLowerCase()))
               .toList();
@@ -83,8 +83,8 @@ class _SearchPageState extends State<SearchPage> {
           ),
           // ignore: prefer_const_constructors
           SizedBox(height: 6),
-          for (int i = 0; i < suggestionlist.length; i++)
-            DBSearchCard(product: suggestionlist[i]),
+          for (int i = 0; i < suggestionlist!.length; i++)
+            DBSearchCard(product: suggestionlist![i]),
         ],
       ),
     );

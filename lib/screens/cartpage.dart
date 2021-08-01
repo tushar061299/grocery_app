@@ -18,7 +18,7 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 50,
-        backgroundColor: CustomColors.AppbarColor,
+        backgroundColor: Colors.black87,
         // ignore: prefer_const_constructors
         title: Text('Cart', style: CustomTextStyles.AppbarText),
       ),
@@ -72,8 +72,10 @@ class _CartPageState extends State<CartPage> {
               return Expanded(
                 child:
                     // ignore: prefer_const_constructors
+                    // ignore: sized_box_for_whitespace
                     Container(
                   height: 300,
+                  // ignore: prefer_const_constructors
                   child: Center(
                     // ignore: prefer_const_constructors
                     child:

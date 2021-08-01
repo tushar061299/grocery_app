@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/apptheme.dart';
-import 'package:grocery_app/models/dbproducts.dart';
+import 'package:grocery_app/models/pcproducts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:grocery_app/services/addtocart.dart';
 
-class DBSearchCard extends StatelessWidget {
-  DBSearchCard({
+class PCSearchCard extends StatelessWidget {
+  PCSearchCard({
     required this.product,
   });
 
-  final DBProduct product;
+  final PCProduct product;
   final AddtoCart _addtoCart = AddtoCart();
   @override
   Widget build(BuildContext context) {
