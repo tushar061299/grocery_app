@@ -1,16 +1,11 @@
-# grocery_app
+# Grocery_app
 
-A new Flutter project.
+Basic Groceries item available in one click with Image To Text Recognition Model which will help to scan the Grocery list and find out all the products in one click.
 
-## Getting Started
+#  Key Points
 
-This project is a starting point for a Flutter application.
+#  1)Firebase Authentication(Login / Register)
+#  2)Add To Cart Feature
+#  3)Search Feature
+#  4) Image to Text Recognition Model for scanning Grocery List
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
